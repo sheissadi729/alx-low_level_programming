@@ -5,7 +5,7 @@
  */
 int main(void)
 {
-	char str[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ\n";
+	char str[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\n";
 	int i = 0;
 
 	while (str[i] != '\0')
