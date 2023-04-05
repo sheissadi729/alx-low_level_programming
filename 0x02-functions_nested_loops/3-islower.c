@@ -1,11 +1,8 @@
 #include "main.h"
 /*
- * _islower - shows 1 if the input is a
- * lowercase char, otherwise shows 0
- *
+ * _islower - shows 1 or 0 depending on the input
  * @c: the char in ascii code
- *
- * Return: 1 for lower, 0 for upper
+ * description - if the number is lowercase, prints 1, if not prints 0.
  */
 int _islower(int c)
 {
