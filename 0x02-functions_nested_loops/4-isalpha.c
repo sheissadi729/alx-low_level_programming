@@ -1,6 +1,6 @@
 #include "main.h"
 /*
- * _isalpha - shows 1 if the input is a 
+ * _isalpha - shows 1 if the input is a
  * letter, otherwise shows 0
  *
  * @c: the char in ascii code
@@ -9,7 +9,7 @@
  */
 int _isalpha(int c)
 {
-	if ((c >=97 && <=122) || (c >=65 && c <=90))
+	if ((c >= 97 && <= 122) || (c >= 65 && c <= 90))
 	{
 		return (1);
 	}
@@ -17,5 +17,5 @@ int _isalpha(int c)
 	{
 		return (0);
 	}
-	_putchar('\n');	
+	_putchar('\n');
 }
