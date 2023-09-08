@@ -8,7 +8,8 @@
  */
 int main(void)
 {
-	const char *m = ("and that piece of art is useful\" - Dora Korpar, 2015-10-19\n");
+	const char *m = "and that piece of art is useful\" \
+- Dora Korpar, 2015-10-19\n";
 
 	write(STDOUT_FILENO, m, strlen(m));
 	return (1);
