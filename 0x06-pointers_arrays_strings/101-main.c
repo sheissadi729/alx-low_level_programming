@@ -11,6 +11,8 @@ int main(void)
     _putchar('\n');
     print_number(402);
     _putchar('\n');
+    print_number(2147483647);
+    _putchar('\n');
     print_number(1024);
     _putchar('\n');
     print_number(0);
