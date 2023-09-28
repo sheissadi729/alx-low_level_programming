@@ -1,61 +1,69 @@
 #include "main.h"
 /**
- * *infinite_add adds two numbers
+ * rev_string - reverses a string
+ * @s: pointer to the string
+ */
+void rev_string(char *s)
+{
+	int i;
+	int j;
+	char ch;
+	int l = 0;
+
+	for (j = 0; s[j] != '\0'; j++)
+	{
+		l += 1;
+	}
+	for (i = 0; i != l / 2; i++)
+	{
+		ch = s[i];
+		s[i] = s[l - 1 - i];
+		s[l - 1 - i] = ch;
+	}
+}
+
+/**
+ * *infinite_add - adds two numbers
  * @n1: first number
- * @n2: second number 
+ * @n2: second number
  * @r: buffer that contains the result
  * @size_r: size of the buffer
  * Return: pointer to the result
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i, j, k, m, l, ll;
-	int l1 = 0;
-	int l2 = 0;
+	int i, j, k, digit1, digit2, sum;
+	int carry = 0;
 
 	for (i = 0; n1[i] != '\0'; i++)
 	{
-		l1 += 1;
 	}
 	for (j = 0; n2[j] != '\0'; j++)
 	{
-		l2 += 1;
 	}
-	if (l1 > l2)
+	i--;
+	j--;
+	if (i > size_r - 3 || j > size_r - 3)
 	{
-		l = l1;
-		ll = l2;
+		return (0);
 	}
 	else
 	{
-		l = l2;
-		ll = l1;
-	}
-	if (ll > size_r)
-	{
-		r = '\0';
-	}
-	else
-	{
-		for (k = 0; k < l; k++)
+		for (k = 0; i >= 0 || j >= 0 || carry > 0; k++)
 		{
-			if ((n1[l1 - k - 1] + n2[l2 - k - 1]) > 9)
-			{
-				r[size_r - k - 1] = (n1[l1 - k - 1] + n2[l2 - k - 1]) % 10;
-				r[size_r - k - 2] = ((n1[l1 - k - 1] + n2[l2 - k - 1]) / 10);
-			}
-			else
-			{
-				r[size_r - k - 1] = n1[l1 - k - 1] + n2[l2 - k - 1];
-			}
+			digit1 = i >= 0 ? n1[i] - '0' : 0;
+			digit2 = j >= 0 ? n2[j] - '0' : 0;
+			sum = digit1 + digit2 + carry;
+			carry = sum / 10;
+			if (k < size_r - 1)
+				r[k] = (sum % 10) + '0';
+			if (i >= 0)
+				i--;
+			if (j >= 0)
+				j--;
 		}
-		for (m = 0; m < ll - l; m++)
-		{
-			if (l1 > l2)
-				r[size_r - m - l] = n1[l1 - m - l];
-			else
-				r[size_r - m - l] = n2[l2 - m - l];
-		}
+		r[k] = '\0';
 	}
+	rev_string(r);
 	return (r);
 }
