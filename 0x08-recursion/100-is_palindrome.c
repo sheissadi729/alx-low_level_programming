@@ -26,3 +26,14 @@ int f(char *s, int start, int end)
 	else
 		return (f(s, start + 1, end - 1));
 }
+/**
+ * _strlen_recursion - returns the length of a string
+ * @s: pointer to the string
+ * Return: lenght of the string
+ */
+int _strlen_recursion(char *s)
+{
+	if (*s == '\0')
+		return (0);
+	return (1 + _strlen_recursion(s + 1));
+}
