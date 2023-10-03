@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	{
 		if (argument[0] == '-')
 		{
-			printf("0");
+			printf("0\n");
 		}
 		else
 		{
