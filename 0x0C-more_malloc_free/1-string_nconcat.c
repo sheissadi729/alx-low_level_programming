@@ -29,18 +29,19 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		p[k] = s1[k];
 	}
-	if (n >= j)
-	{
-		for (l = 0; s2[l] != '\0'; l++)
-			p[k + l] = s2[l];
-	}
-	else
+	if (n < j)
 	{
 		for (l = 0; l < n && s2[l] != '\0'; l++)
 		{
 			p[k + l] = s2[l];
 		}
 	}
+	else
+	{
+		for (l = 0; s2[l] != '\0'; l++)
+			p[k + l] = s2[l];
+	}
+
 	p[k + l] = '\0';
 	return (p);
 }
