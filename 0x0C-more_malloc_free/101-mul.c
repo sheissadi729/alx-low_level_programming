@@ -9,8 +9,13 @@
 int main(int argc, char *argv[])
 {
 	char err[] = "Error\n";
-	int i;
-	unsigned long int num1, num2, res;
+	int i, j;
+	int size = 4;
+	int size2 = 4;
+	int num1, num2, res;
+	int *p1 = NULL;
+	int *p2 = NULL;
+	int *p3 = NULL;
 
 	if (argc != 3)
 	{
@@ -25,8 +30,27 @@ int main(int argc, char *argv[])
 	num1 = __atoi(argv[1]);
 	num2 = __atoi(argv[2]);
 	res = num1 * num2;
+	p1 = malloc(size * sizeof(int));
+	for (i = 0; argv[1][i] != '\0'; i++)
+	{
+		p1[i] = num1;
+		if (i == size)
+			p1 = _realloc(p1, (size * sizeof(int)), (2 * size * sizeof(int)));
+	}
+	p2 = malloc(size2 * sizeof(int));
+	for (j = 0; argv[2][j] != '\0'; j++)
+	{
+		p2[j] = num2;
+		if (i == size2)
+			p2 = _realloc(p1, (size2 * sizeof(int)), (2 * size2 * sizeof(int)));
+	}
+	p3 = malloc((size * size2) * sizeof(int));
+	*p3 = res;
 	putint(res);
 	_putchar('\n');
+	free(p1);
+	free(p2);
+	free(p3);
 	return (0);
 }
 /**
@@ -72,4 +96,36 @@ void putint(int n)
 		putint(n / 10);
 	}
 	_putchar((n % 10) + '0');
+}
+/**
+ * _realloc - reallocates a memory block
+ * @ptr: pointer to the memory previously allocated
+ * @old_size: size, in bytes, of the allocated space for ptr
+ * @new_size: new size, in bytes of the new memory block
+ * Return: pointer to the newly allocated space, or NULL
+ * if failure or if new_size is equal to zero
+ */
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+{
+	int *p = NULL;
+	int *intptr = (int *) ptr;
+	unsigned int i;
+
+	if (new_size == old_size)
+		return (ptr);
+	if (ptr == NULL)
+		return (p);
+	if (new_size == 0)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	p = malloc(new_size);
+	if (p == NULL)
+		return (NULL);
+	for (i = 0; i < old_size && i < new_size; i++)
+	{
+		p[i] = intptr[i];
+	}
+	return (p);
 }
