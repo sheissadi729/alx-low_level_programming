@@ -9,8 +9,7 @@
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *p;
-	char *intptr = (char *) ptr;
+	void *p;
 	unsigned int i;
 
 	if (ptr == NULL)
@@ -31,7 +30,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		if (p != NULL)
 		{
 			for (i = 0; i < old_size && i < new_size; i++)
-				p[i] = intptr[i];
+				*((char *)temp_block + i) = *((char *) ptr + i);
 			return (p);
 		}
 		else
