@@ -1,12 +1,10 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
 int find_len(char *str);
 char *create_xarray(int size);
 char *iterate_zeroes(char *str);
 void get_prod(char *prod, char *mult, int digit, int zeroes);
 void add_nums(char *final_prod, char *next_prod, int next_len);
-
 /**
  * find_len - Finds the length of a string.
  * @str: The string to be measured.
@@ -75,12 +73,13 @@ char *iterate_zeroes(char *str)
  */
 int get_digit(char c)
 {
-	char err[] = "Error\n"
+	char err[] = "Error\n";
 	int i;
 	int digit = c - '0';
 
 	if (digit < 0 || digit > 9)
 	{
+		i = 0;
 		while (err[i] != '\0')
 		{
 			_putchar(err[i]);
@@ -105,6 +104,8 @@ int get_digit(char c)
 void get_prod(char *prod, char *mult, int digit, int zeroes)
 {
 	int mult_len, num, tens = 0;
+	int i;
+	char err[] = "Error\n";
 
 	mult_len = find_len(mult) - 1;
 	mult += mult_len;
@@ -127,7 +128,10 @@ void get_prod(char *prod, char *mult, int digit, int zeroes)
 	{
 		if (*mult < '0' || *mult > '9')
 		{
-			printf("Error\n");
+			for (i = 0; err[i] != '\0'; i++)
+			{
+				_putchar(err[i]);
+			}
 			exit(98);
 		}
 
@@ -182,7 +186,6 @@ void add_nums(char *final_prod, char *next_prod, int next_len)
 	if (tens)
 		*final_prod = (tens % 10) + '0';
 }
-
 /**
  * main - Multiplies two positive numbers.
  * @argv: The number of arguments passed to the program.
@@ -196,10 +199,16 @@ int main(int argc, char *argv[])
 {
 	char *final_prod, *next_prod;
 	int size, index, digit, zeroes = 0;
+	char err[] = "Error\n";
+	int i = 0;
 
 	if (argc != 3)
 	{
-		printf("Error\n");
+		while (err[i] != '\0')
+		{
+			_putchar(err[i]);
+			i++;
+		}
 		exit(98);
 	}
 
@@ -209,7 +218,8 @@ int main(int argc, char *argv[])
 		argv[2] = iterate_zeroes(argv[2]);
 	if (*(argv[1]) == '\0' || *(argv[2]) == '\0')
 	{
-		printf("0\n");
+		_putchar('0');
+		_putchar('\n');
 		return (0);
 	}
 
@@ -226,9 +236,9 @@ int main(int argc, char *argv[])
 	for (index = 0; final_prod[index]; index++)
 	{
 		if (final_prod[index] != 'x')
-			putchar(final_prod[index]);
+			_putchar(final_prod[index]);
 	}
-	putchar('\n');
+	_putchar('\n');
 
 	free(next_prod);
 	free(final_prod);
