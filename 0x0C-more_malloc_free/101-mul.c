@@ -75,12 +75,17 @@ char *iterate_zeroes(char *str)
  */
 int get_digit(char c)
 {
+	char err[] = "Error\n"
+	int i;
 	int digit = c - '0';
 
 	if (digit < 0 || digit > 9)
 	{
-		printf("Error\n");
-
+		while (err[i] != '\0')
+		{
+			_putchar(err[i]);
+			i++;
+		}
 		exit(98);
 	}
 
