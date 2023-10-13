@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
+#include "variadic_functions.h"
 /**
  * print_all - prints anything
  * @format: list of types of arguments passed to the function
@@ -7,7 +8,10 @@
 void print_all(const char * const format, ...)
 {
 	va_list lst;
-	int i = 0, char *x, int flag, int j = _strlen_recursion(format);
+	int i = 0;
+	int flag; 
+	int j = _strlen_recursion(format);
+	char *x;
 
 	va_start(lst, format);
 	while (format[i])
@@ -49,7 +53,7 @@ void print_all(const char * const format, ...)
  * @s: pointer to the string
  * Return: lenght of the string
  */
-int _strlen_recursion(char *s)
+int _strlen_recursion(const char *s)
 {
 	if (*s == '\0')
 		return (0);
