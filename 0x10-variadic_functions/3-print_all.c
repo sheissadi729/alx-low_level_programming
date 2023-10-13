@@ -7,59 +7,51 @@
 void print_all(const char * const format, ...)
 {
 	va_list lst;
-	int i = 0, j = 0;
-	double y;
-	char *x;
-	int flag;
+	int i = 0, char *x, int flag, int j = _strlen_recursion(format);
 
-	while (format[j])
-	{
-		j++;
-	}
 	va_start(lst, format);
-	i = 0;
 	while (format[i])
 	{
 		switch (format[i])
 		{
 			case 's':
-			{
 				x = va_arg(lst, char *);
 				if (x == NULL)
 					x = "";
 				printf("%s", x);
 				flag = 0;
 				break;
-			}
 			case 'c':
-			{
 				printf("%c", va_arg(lst, int));
 				flag = 0;
 				break;
-			}
 			case 'i':
-			{
 				printf("%i", va_arg(lst, int));
 				flag = 0;
 				break;
-			}
 			case 'f':
-			{
-				y = va_arg(lst, double);
-				printf("%f", y);
+				printf("%f", va_arg(lst, double));
 				flag = 0;
 				break;
-			}
 			default:
-			{
 				flag = 1;
 				break;
-			}
 		}
-		if (i != ( - 1) && flag != 1)
+		if (i != (j - 1) && flag != 1)
 			printf(", ");
 		i++;
 	}
 	printf("\n");
 	va_end(lst);
+}
+/**
+ * _strlen_recursion - returns the length of a string
+ * @s: pointer to the string
+ * Return: lenght of the string
+ */
+int _strlen_recursion(char *s)
+{
+	if (*s == '\0')
+		return (0);
+	return (1 + _strlen_recursion(s + 1));
 }
