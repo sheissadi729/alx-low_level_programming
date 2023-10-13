@@ -9,7 +9,7 @@ void print_all(const char * const format, ...)
 {
 	va_list lst;
 	int i = 0;
-	int flag; 
+	int flag;
 	int j = _strlen_recursion(format);
 	char *x;
 
