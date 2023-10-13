@@ -21,7 +21,7 @@ void print_all(const char * const format, ...)
 			case 's':
 				x = va_arg(lst, char *);
 				if (x == NULL)
-					x = "";
+					x = "(nil)";
 				printf("%s", x);
 				flag = 0;
 				break;
@@ -30,7 +30,7 @@ void print_all(const char * const format, ...)
 				flag = 0;
 				break;
 			case 'i':
-				printf("%i", va_arg(lst, int));
+				printf("%d", va_arg(lst, int));
 				flag = 0;
 				break;
 			case 'f':
