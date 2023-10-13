@@ -23,8 +23,8 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		else
 			printf("(nil)");
 		if (i != n - 1)
-			printf("%s", separator);	
-		printf("\n");
+			printf("%s", separator);
 	}
+	printf("\n");
 	va_end(lst);
 }
