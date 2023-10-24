@@ -2,6 +2,7 @@
 /**
  * add_nodeint_end - adds a node at the end of a list
  * @head: double pointer the first element of the list
+ * @n: integer meme=ber of listint_t
  * Return: adress of the new element
  */
 listint_t *add_nodeint_end(listint_t **head, const int n)
@@ -19,7 +20,7 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	{
 		temp = *head;
 		while (temp->next != NULL)
-		{	
+		{
 			temp = temp->next;
 		}
 		temp->next = new;

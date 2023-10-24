@@ -2,7 +2,7 @@
 /**
  * delete_nodeint_at_index -  deletes the node of a listint_t linked list
  * @head: double pointer to the first node
- * @idx: index of the list where the node to be deleted
+ * @index: index of the list where the node to be deleted
  * Return: 1 if it succeeded, -1 if it failed
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
@@ -24,7 +24,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		for (i = 0; i < index; i++)
 		{
 			before = temp;
-			temp = temp->next;;
+			temp = temp->next;
 			if (temp == NULL)
 				return (-1);
 		}
